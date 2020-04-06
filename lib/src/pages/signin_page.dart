@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/src/pages/signup_page.dart';
 
 class SignInPage extends StatefulWidget {
   @override
@@ -20,7 +21,6 @@ class _SignInPageState extends State<SignInPage> {
       ),
     );
   }
-
 
   Widget _buildPasswordTextField(){
     return TextFormField(
@@ -47,8 +47,8 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: Padding(
+        resizeToAvoidBottomPadding: false,
+        body: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -92,13 +92,16 @@ class _SignInPageState extends State<SignInPage> {
                   children: <Widget>[
                     Text("Don't have an account?", style: TextStyle(fontSize: 18.0, color: Color(0xFFBDC2CB), fontWeight: FontWeight.bold),),
                     SizedBox(width: 10.0,),
-                    Text("Sign Up", style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.blueAccent),),
+                    GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => SignUpPage()));
+                        },
+                        child: Text("Sign Up", style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.blueAccent),)),
                   ],
                 )
               ],
             ),
           ),
-        ),
       ),
     );
   }
