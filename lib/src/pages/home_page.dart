@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/src/scoped_models/food_model.dart';
+import 'package:food_delivery_app/src/scoped_models/main_model.dart';
 import 'package:food_delivery_app/src/widgets/bought_foods.dart';
 import 'package:food_delivery_app/src/widgets/food_category.dart';
 import 'package:food_delivery_app/src/widgets/home_top_info.dart';
 import 'package:food_delivery_app/src/widgets/search_field.dart';
+import 'package:scoped_model/scoped_model.dart';
 
 // Model
 import '../models/food_model.dart';
@@ -11,13 +14,27 @@ import '../models/food_model.dart';
 import '../data/food_data.dart';
 
 class HomePage extends StatefulWidget {
+
+//  final FoodModel foodModel;
+//
+//  const HomePage(this.foodModel);
+
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
 
-  List<Food> _foods = foods;
+//  List<Food> _foods = foods;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    //Call the fetch methods on foodModel
+//    widget.foodModel.fetchFoods();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +58,17 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           SizedBox(height: 20.0,),
-          Column(
-            children: _foods.map(_buildFoodItems).toList(),
-          ),
+//          Column(
+//            children: _foods.map(_buildFoodItems).toList(),
+//            children: widget.foodModel.foods.map(_buildFoodItems).toList(),
+//          ),
+        ScopedModelDescendant<MainModel>(
+          builder: (BuildContext context, Widget child, MainModel model){
+            return Column(
+              children: model.foods.map(_buildFoodItems).toList(),
+            );
+          },
+        )
         ],
       ),
     );
@@ -57,6 +82,7 @@ class _HomePageState extends State<HomePage> {
         id: food.id,
         name: food.name,
         imagePath: food.imagePath,
+//        imagePath: "assets/images/breakfast.jpg",
         category: food.category,
         discount: food.discount,
         price: food.price,

@@ -73,7 +73,7 @@ class _BoughtFoodState extends State<BoughtFood> {
                 Column(
                   children: <Widget>[
                     Text(widget.price.toString(), style: TextStyle( fontWeight: FontWeight.bold ,color: Colors.orangeAccent, fontSize: 18.0, ),),
-                    Text("Hin Order", style: TextStyle( color: Colors.grey ),),
+                    Text("Min Order", style: TextStyle( color: Colors.grey ),),
                   ],
                 ),
               ],
