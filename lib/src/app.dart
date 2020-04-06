@@ -17,7 +17,7 @@ class App extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: "Foos Delivery App",
         theme: ThemeData(
-            primaryColor: Colors.deepOrange
+            primaryColor: Colors.blue
         ),
         home: MainScreen(model: mainModel),
       ),
